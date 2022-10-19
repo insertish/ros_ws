@@ -1,0 +1,15 @@
+# goal
+uint32 x
+uint32 y
+
+# TODO: somehow allow optionally serialising
+# angle_threshold and distance_threshold
+#
+# from the looks of things, ROS1 does not support
+# optional fields in messages but this can be emulated
+# with bitfields or key-value objects
+---
+# empty result
+---
+# progress feedback
+float32 distance_left
