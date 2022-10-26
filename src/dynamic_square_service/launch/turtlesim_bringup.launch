@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="turtlesim" type="turtlesim_node" name="turtlesim" />
+    <node pkg="dynamic_square_service" type="square.py" name="square_navigation">
+        <remap from="/cmd_vel" to="/turtle1/cmd_vel" />
+    </node>
+</launch>
