@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find rosplan_stage_demo)/launch/empty_stage_single_robot.launch" />
+    <node pkg="turtle_nav" type="circle.py" name="circle_navigation">
+        <remap from="/turtle1/cmd_vel" to="/cmd_vel" />
+    </node>
+</launch>
