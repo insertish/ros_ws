@@ -7,7 +7,7 @@ from dynamic_square_service.srv import SetSize, SetSizeRequest
 rospy.init_node('dynamic_square_client', anonymous=True)
 
 # wait for service to be online
-rospy.wait_for_service('set_square_size', SetSize)
+rospy.wait_for_service('set_square_size')
 
 # setup service proxy
 service_proxy = rospy.ServiceProxy('set_square_size', SetSize)
