@@ -281,3 +281,5 @@ Cargo.lock
 *.pdb
 
 # End of https://www.toptal.com/developers/gitignore/api/ros,ros2,python,rust,c++
+
+.catkin_tools
