@@ -1,0 +1,3 @@
+[submodule "src/ros_map_utils"]
+	path = src/ros_map_utils
+	url = https://github.com/insertish/ros_map_utils
