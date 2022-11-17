@@ -1,0 +1,3 @@
+# my_pkg/srv/YOLOLastFrame.srv
+---
+yolo/YOLODetection[] detections
