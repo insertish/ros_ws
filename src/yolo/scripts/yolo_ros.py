@@ -11,9 +11,13 @@ from yolo.srv import YOLOLastFrame, YOLOLastFrameResponse
 from yolo.msg import YOLODetection
 from sensor_msgs.msg import Image
 
+from sound_play.msg import SoundRequest
+from sound_play.libsoundplay import SoundClient
+
 
 class YOLOv4ROSITR:
     def __init__(self):
+        self.soundhandle = SoundClient()
         self.bridge = CvBridge()
         self.cv_image = None
         self.colors = {}
@@ -22,7 +26,7 @@ class YOLOv4ROSITR:
         self.detector = Detector(gpu_id=0, config_path='/opt/darknet/cfg/yolov4.cfg',
                                  weights_path='/opt/darknet/yolov4.weights',
                                  lib_darknet_path='/opt/darknet/libdarknet.so',
-                                 meta_path='/home/mink/Projects/ITR/ros_ws/src/yolo/cfg/coco.data')
+                                 meta_path='src/yolo/cfg/coco.data')
         self.sub = rospy.Subscriber(
             "/usb_cam/image_raw", Image, self.img_callback)
         self.pub = rospy.Publisher("/detected_frame", Image, queue_size=10)
@@ -81,6 +85,10 @@ class YOLOv4ROSITR:
                 # Helper: to convert from opencv image to a image message you can do :
                 message = self.bridge.cv2_to_imgmsg(cv_copy, encoding="bgr8")
                 self.pub.publish(message)
+
+                self.soundhandle.say(
+                    # voice_kal_diphone
+                    f"I found a {{d.name}}", "kal_diphone", 1.0)
             else:
                 print("!shit fuck1!!")
                 pass
